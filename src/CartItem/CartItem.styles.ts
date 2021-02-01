@@ -11,11 +11,12 @@ export const Wrapper = styled.div`
     flex: 1;
   }
 
-  .information, .button {
+  .information, 
+  .buttons {
     display: flex;
     justify-content: space-between;
   }
-  
+
   img {
     max-width: 80px;
     object-fit: cover;
