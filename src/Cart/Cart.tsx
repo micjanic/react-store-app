@@ -3,6 +3,7 @@ import CartItem from '../CartItem/CartItem'
 import { Wrapper } from './Cart.styles'
 //Types
 import { CartItemType } from '../App'
+import { ListItemSecondaryAction } from '@material-ui/core';
 
 type Props = {
   cartItems: CartItemType[];
@@ -11,6 +12,7 @@ type Props = {
 };
 
 const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
+  const calculateTotal = (items: CartItemType[]) => items.reduce((acc: number, item) => acc + (item.amount * item.price), 0);
   return (
     <Wrapper>
       <h2>Your shopping cart</h2>
@@ -21,6 +23,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
           addToCart={addToCart}
           removeFromCart={removeFromCart} />
       ))}
+      <h2>Total: ${calculateTotal(cartItems).toFixed(2)}</h2>
     </Wrapper>
   )
 }
